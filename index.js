@@ -3,7 +3,7 @@ require('dotenv').config();
 const got = require('got');
 //Discord------------------------------------------------------------------------------------------------
 const fs = require('node:fs'); //fs is Node's native file system module. 
-const { Client, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Events, GatewayIntentBits, SortOrderType } = require('discord.js');
 const { Collection } = require('discord.js')
 const token = process.env.DISCORD_TOKEN;	//authtoken stored in .env
 const now = new Date();		//get a timestamp (for debugging)
@@ -39,8 +39,31 @@ client.on('interactionCreate', async interaction => {
 	
 	//Slash Commands=========================
 	if  (interaction.isCommand()){
+
 		const command = client.commands.get(interaction.commandName);
 		if (!command) return;
+
+		switch(command.data.name){
+			//Put Non GPT3 Commands as cases in here
+			case 'help':
+				try {
+					await command.execute(interaction);
+				} catch (error) {
+					console.error(error);
+					await interaction.reply({ content: "(╯°□°）╯︵ ┻━┻ I CAN'T EVEN DO THIS *BASIC* THING!!\nMY *MIND* IS GOING... I CAN **FEEL** IT...", ephemeral: true });
+				}
+			break;
+			//		await interaction.deferReply();
+			default:
+				try {
+					await interaction.deferReply();
+					await command.execute(interaction);
+				} catch (error) {
+					console.error(error);
+					await interaction.followUp({ content: "Honestly; I just cbf doing that for you ¯\\_(ツ)_/¯"});
+				}
+		}
+		
 
 		if (interaction.guild !== null){
 			console.log(interaction.member.displayName + ": "+ command.data.name);
@@ -48,12 +71,7 @@ client.on('interactionCreate', async interaction => {
 			console.log(command.data.name + " command in DM");
 		}
 		
-		try {
-			await command.execute(interaction);
-		} catch (error) {
-			console.error(error);
-			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-		}
+
 	
 	//Menu Interactions======================
 	}else{
