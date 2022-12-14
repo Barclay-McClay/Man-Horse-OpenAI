@@ -42,7 +42,6 @@ client.on('interactionCreate', async interaction => {
 
 		const command = client.commands.get(interaction.commandName);
 		if (!command) return;
-
 		switch(command.data.name){
 			//Put Non GPT3 Commands as cases in here
 			case 'help':

@@ -52,10 +52,10 @@ module.exports = {
         //const numberInput = interaction.options.getString('steps')
         const txt = await AICall(promptInput);//,numberInput);
         const embed = new EmbedBuilder()
-            .setColor("#f15b40")
+            .setColor("#f7931e")
             .setTitle(promptInput + "...")
             .setURL('https://github.com/Barclay-McClay/Man-Horse-OpenAI')
-            .setAuthor({ name: 'JinBot', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/HAL9000.svg/256px-HAL9000.svg.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
+            .setAuthor({ name: 'JinBot', iconURL: '../pfpThumb.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
             .setDescription("..." + txt)
             .setFooter({ text: `JinBot • /${commandName}` })
             .setTimestamp();
