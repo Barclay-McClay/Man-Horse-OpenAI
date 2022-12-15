@@ -49,7 +49,7 @@ client.on('interactionCreate', async interaction => {
 					await command.execute(interaction);
 				} catch (error) {
 					console.error(error);
-					await interaction.reply({ content: "(╯°□°）╯︵ ┻━┻ I CAN'T EVEN DO THIS *BASIC* THING!!\nMY *MIND* IS GOING... I CAN **FEEL** IT...", ephemeral: true });
+					await interaction.reply({ content: "(╯°□°）╯︵ ┻━┻ I CAN'T EVEN DO THIS *BASIC* THING!!\nMY *MIND* IS GOING... I CAN **FEEL** IT..."});
 				}
 			break;
 			//		await interaction.deferReply();

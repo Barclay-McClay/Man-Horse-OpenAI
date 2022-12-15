@@ -39,12 +39,43 @@ module.exports = {
     //-------------------------------------------------
     data: new SlashCommandBuilder()
         .setName(commandName) //<----SET THE command name to be  the same as this file's name.js
-        .setDescription('Pick an office DJ'), //this is how discord will describe the command to the user
-    /*
-    .addStringOption(option =>
-      option.setName('prompt')
-        .setDescription("JinBot will try and 'complete' your prompt...")
-        .setRequired(true)), //*/
+        .setDescription('Pick an office DJ') //this is how discord will describe the command to the user
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(true)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(true)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(false)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(false)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(false)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(false)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(false)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(false)) //*/
+        .addStringOption(option =>
+        option.setName('choice')
+            .setDescription("JinBot will pick a DJ out of the options you provide...")
+            .setRequired(false)), //*/
     //-------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------
     async execute(interaction) {//
@@ -55,7 +86,7 @@ module.exports = {
             .setColor("#f7931e")
             .setTitle(promptInput + "...")
             .setURL('https://github.com/Barclay-McClay/Man-Horse-OpenAI')
-            .setAuthor({ name: 'JinBot', iconURL: '../pfpThumb.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
+            .setAuthor({ name: 'JinBot', iconURL: 'https://raw.githubusercontent.com/Barclay-McClay/Man-Horse-OpenAI/main/pfpThumb.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
             .setDescription("..." + txt)
             .setFooter({ text: `JinBot • /${commandName}` })
             .setTimestamp();

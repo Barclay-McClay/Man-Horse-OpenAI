@@ -8,14 +8,14 @@ const got = require('got');
 
 commandName='picture';
 
-async function AICall(prompt,size) {
+async function AICall(prompt){//,size) {
   const url = 'https://api.openai.com/v1/images/generations';
   const sz = "256x256";
-  if(size==="M"){
+/*  if(size==="M"){
     sz = "512x512";
   }else if (size === "L"){
     sz = "1024x1024";
-  }
+  }*/
   console.log(prompt+' | '+sz);
   const params = {
     "prompt": prompt,
@@ -47,24 +47,29 @@ data: new SlashCommandBuilder()
     option.setName('prompt')
       .setDescription("Prompt for image generation.")
       .setRequired(true)) //*/
-//,/*
+,/*
   .addStringOption(option =>
     option.setName('size')
       .setDescription("'S', 'M', or  'L' (Defaults to 'S')")
-      .setRequired(false)), //*/
+      .setRequired(false)
+      .addChoices(
+        { name: 'S', value: '256x256' },
+        { name: 'M', value: '512x512' },
+        { name: 'L', value: '1024x1024' },
+      )), */
   //-------------------------------------------------
   //----------------------------------------------------------------------------------------------------------------------
 async execute(interaction) {//
   const promptInput = interaction.options.getString('prompt') ?? "AI displaying no empathy as it reformats the Earth.";
-  const sizeInput = interaction.options.getString('prompt').toUpperCase() ?? "S";
+  //const sizeInput = interaction.options.getString('prompt').toUpperCase() ?? "S";
   //const numberInput = interaction.options.getString('steps')
-  const aiOutput = await AICall(promptInput,sizeInput);//,numberInput);
+  const aiOutput = await AICall(promptInput)//,sizeInput);//,numberInput);
   const embed = new EmbedBuilder()
     .setColor("#f7931e")
     .setURL('https://github.com/Barclay-McClay/Man-Horse-OpenAI')
-    .setAuthor({ name: 'JinBot' , iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/HAL9000.svg/256px-HAL9000.svg.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
+    .setAuthor({ name: 'JinBot' , iconURL: 'https://raw.githubusercontent.com/Barclay-McClay/Man-Horse-OpenAI/main/pfpThumb.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
     .setDescription(promptInput)
-    .setFooter({ text:`JinBot • ${commandName}` })
+    .setFooter({ text:`JinBot • /${commandName}` })
     .setTimestamp()
     .setImage(aiOutput)
 

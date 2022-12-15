@@ -63,7 +63,7 @@ async execute(interaction) {//
   .setColor("#f7931e")
   .setTitle(`How to ${howToInput} in ${steps} easy steps:`)
   .setURL('https://github.com/Barclay-McClay/Man-Horse-OpenAI')
-  .setAuthor({ name: 'JinBot' , iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/HAL9000.svg/256px-HAL9000.svg.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
+  .setAuthor({ name: 'JinBot' , iconURL: 'https://raw.githubusercontent.com/Barclay-McClay/Man-Horse-OpenAI/main/pfpThumb.png', url: 'https://github.com/Barclay-McClay/Man-Horse-OpenAI' })
   .setDescription(txt)
   .setFooter({ text:`JinBot • /${commandName}` })
   .setTimestamp();
