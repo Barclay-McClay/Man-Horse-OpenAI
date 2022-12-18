@@ -28,7 +28,6 @@ async function AICall(prompt){//,size) {
   try {
     const response = await got.post(url, { json: params, headers: headers }).json();
     output = response.data[0].url;
-    console.log(output);
     return output
   } catch (err) {
     console.log(err);
@@ -47,7 +46,16 @@ data: new SlashCommandBuilder()
     option.setName('prompt')
       .setDescription("Prompt for image generation.")
       .setRequired(true)) //*/
-,/*
+  .addStringOption(option =>
+    option.setName('size')
+      .setDescription("'S', 'M', or  'L' (Defaults to 'S')")
+      .setRequired(false)
+      .addChoices(
+        { name: 'S', value: '256x256' },
+        { name: 'M', value: '512x512' },
+        { name: 'L', value: '1024x1024' },
+      )), 
+/*
   .addStringOption(option =>
     option.setName('size')
       .setDescription("'S', 'M', or  'L' (Defaults to 'S')")
