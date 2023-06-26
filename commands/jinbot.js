@@ -12,14 +12,25 @@ async function AICall(prompt) {
   const url = 'https://api.openai.com/v1/completions';
   console.log(prompt);
   const params = {
-    "model": "text-curie-001",
-    "prompt": prompt,
-    "max_tokens": 125,
-    "temperature": 0.9,
-    "frequency_penalty": 0,
-    'presence_penalty': 0,
-    "stop": null
-
+      "id":"chatcmpl-abc123",
+      "object":"chat.completion",
+      "created":1677858242,
+      "model":"gpt-3.5-turbo",
+      "usage":{
+         "prompt_tokens":13,
+         "completion_tokens":7,
+         "total_tokens":20
+      },
+      "choices":[
+         {
+            "message":{
+               "role":"assistant",
+               "content":"\n\nThis is a test!"
+            },
+            "finish_reason":"stop",
+            "index":0
+         }
+      ]
   };
   const headers = {
     'Authorization': `Bearer ${process.env.OPENAI_SECRET_KEY}`,
